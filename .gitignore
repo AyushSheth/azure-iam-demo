@@ -1,0 +1,8 @@
+# Keep real config private
+js/config.js
+
+# Node modules
+node_modules/
+
+# Mac system files
+.DS_Store

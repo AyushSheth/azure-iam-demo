@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyApp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- LOGIN VIEW -->
+  <div id="view-login" class="card">
+    <div class="logo">
+      <div class="logo-mark">M</div>
+      <span class="logo-name">MyApp</span>
+    </div>
+    <h1>Welcome</h1>
+    <p>Sign in with your Microsoft account to continue.</p>
+    <button class="btn-microsoft" onclick="signIn()">
+      <svg width="20" height="20" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1"  y="1"  width="9" height="9" fill="#f25022"/>
+        <rect x="11" y="1"  width="9" height="9" fill="#7fba00"/>
+        <rect x="1"  y="11" width="9" height="9" fill="#00a4ef"/>
+        <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+      </svg>
+      Sign in with Microsoft
+    </button>
+  </div>
+
+  <!-- DASHBOARD VIEW (hidden until logged in) -->
+  <div id="view-dashboard" class="card" style="display:none;">
+    <div class="logo">
+      <div class="logo-mark">M</div>
+      <span class="logo-name">MyApp</span>
+    </div>
+    <div class="avatar" id="dash-initials"></div>
+    <h1 id="dash-greeting"></h1>
+    <p id="dash-role"></p>
+    <div class="divider"></div>
+    <button class="btn-signout" onclick="signOut()">Sign out</button>
+  </div>
+
+    <!-- MSAL Library -->
+    <script src="js/msal-browser.min.js"></script>
+    <!-- Config -->
+    <script src="js/config.js"></script>
+     <!-- Your auth logic -->
+    <script src="js/auth.js"></script>
+
+
+
+</body>
+</html>

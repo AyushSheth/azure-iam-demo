@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyApp — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .dashboard-card {
+      max-width: 520px;
+      text-align: left;
+    }
+
+    .user-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 64px; height: 64px;
+      background: #eef2ff;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 22px;
+      color: #4f46e5;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .user-info h1 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .user-info p {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .badge-sales-admin     { background: #fef9c3; color: #854d0e; }
+    .badge-sales-associate { background: #dcfce7; color: #166534; }
+    .badge-it-admin        { background: #dbeafe; color: #1e40af; }
+    .badge-it-helpdesk     { background: #f3e8ff; color: #6b21a8; }
+    .badge-default         { background: #f3f4f6; color: #374151; }
+
+    .divider { border-top: 1px solid #dde1ee; margin: 24px 0; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .info-item {
+      background: #f8f9ff;
+      border: 1px solid #dde1ee;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .info-item .label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 4px;
+    }
+
+    .info-item .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1d2e;
+    }
+
+    .btn-signout {
+      width: 100%;
+      padding: 11px;
+      background: transparent;
+      color: #4f46e5;
+      border: 1.5px solid #dde1ee;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-signout:hover { background: #eef2ff; }
+
+    .secure-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #16a34a;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .secure-dot {
+      width: 8px; height: 8px;
+      background: #16a34a;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card dashboard-card">
+
+  <!-- Logo -->
+  <div class="logo">
+    <div class="logo-mark">M</div>
+    <span class="logo-name">MyApp</span>
+  </div>
+
+  <!-- Secure indicator -->
+  <div class="secure-badge">
+    <div class="secure-dot"></div>
+    Authenticated via Microsoft Entra ID
+  </div>
+
+  <!-- User header -->
+  <div class="user-header">
+    <div class="avatar" id="dash-initials"></div>
+    <div class="user-info">
+      <h1 id="dash-name"></h1>
+      <p id="dash-email"></p>
+      <div id="dash-role" class="badge"></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Info grid -->
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="label">First Name</div>
+      <div class="value" id="info-first"></div>
+    </div>
+    <div class="info-item">
+      <div class="label">Last Name</div>
+      <div class="value" id="info-last"></div>
+    </div>
+    <div class="info-item">
+      <div class="label">Email</div>
+      <div class="value" id="info-email"></div>
+    </div>
+    <div class="info-item">
+      <div class="label">Role</div>
+      <div class="value" id="info-role"></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <button class="btn-signout" onclick="signOut()">Sign out</button>
+
+</div>
+
+<script src="js/msal-browser.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
