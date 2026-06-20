@@ -67,10 +67,108 @@ function populateDashboard(account, claims) {
   document.getElementById("info-last").textContent  = last;
   document.getElementById("info-email").textContent = email;
   document.getElementById("info-role").textContent  = role.label;
+  renderRoleContent(role.label);
 }
 
 function signOut() {
   msalInstance.logoutRedirect({
     postLogoutRedirectUri: window.location.origin + "/index.html"
   });
+}
+function renderRoleContent(roleLabel) {
+  const container = document.getElementById("role-content");
+
+  if (roleLabel === "Sales Admin") {
+    container.innerHTML = `
+      <div class="role-section">
+        <h2>Sales Overview</h2>
+        <div class="role-card">
+          <span class="role-card-label">Team Size</span>
+          <span class="role-card-value">12 reps</span>
+        </div>
+        <div class="role-card">
+          <span class="role-card-label">Quarterly Revenue</span>
+          <span class="role-card-value">$482,000</span>
+        </div>
+        <div class="role-card">
+          <span class="role-card-label">Open Deals</span>
+          <span class="role-card-value">37</span>
+        </div>
+        <div class="role-link-list">
+          <a href="#" class="role-link">Manage Sales Team</a>
+          <a href="#" class="role-link">View All Reports</a>
+        </div>
+      </div>
+    `;
+  }
+
+  else if (roleLabel === "Sales Associate") {
+    container.innerHTML = `
+      <div class="role-section">
+        <h2>My Sales</h2>
+        <div class="role-card">
+          <span class="role-card-label">My Quota</span>
+          <span class="role-card-value">$40,000</span>
+        </div>
+        <div class="role-card">
+          <span class="role-card-label">My Open Deals</span>
+          <span class="role-card-value">5</span>
+        </div>
+        <div class="role-link-list">
+          <a href="#" class="role-link">View My Pipeline</a>
+        </div>
+      </div>
+    `;
+  }
+
+  else if (roleLabel === "IT Admin") {
+    container.innerHTML = `
+      <div class="role-section">
+        <h2>System Administration</h2>
+        <div class="role-card">
+          <span class="role-card-label">Active Users</span>
+          <span class="role-card-value">247</span>
+        </div>
+        <div class="role-card">
+          <span class="role-card-label">Open Tickets</span>
+          <span class="role-card-value">9</span>
+        </div>
+        <div class="role-card">
+          <span class="role-card-label">System Status</span>
+          <span class="role-card-value">All Systems Operational</span>
+        </div>
+        <div class="role-link-list">
+          <a href="#" class="role-link">Manage Users</a>
+          <a href="#" class="role-link">View System Logs</a>
+        </div>
+      </div>
+    `;
+  }
+
+  else if (roleLabel === "IT Help Desk") {
+    container.innerHTML = `
+      <div class="role-section">
+        <h2>Help Desk Queue</h2>
+        <div class="role-card">
+          <span class="role-card-label">My Open Tickets</span>
+          <span class="role-card-value">4</span>
+        </div>
+        <div class="role-card">
+          <span class="role-card-label">Avg Response Time</span>
+          <span class="role-card-value">12 min</span>
+        </div>
+        <div class="role-link-list">
+          <a href="#" class="role-link">View Ticket Queue</a>
+        </div>
+      </div>
+    `;
+  }
+
+  else {
+    container.innerHTML = `
+      <div class="no-role-message">
+        Your account has not been assigned a role yet. Please contact your administrator to request access.
+      </div>
+    `;
+  }
 }

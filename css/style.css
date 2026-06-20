@@ -99,3 +99,71 @@ p  { font-size: 14px; color: #6b7280; margin-bottom: 24px; }
 .badge-it-admin         { background: #dbeafe; color: #1e40af; }
 .badge-it-helpdesk      { background: #f3e8ff; color: #6b21a8; }
 .badge-default          { background: #f3f4f6; color: #374151; }
+
+/* ── Role-specific content ── */
+.role-section {
+  text-align: left;
+}
+
+.role-section h2 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1d2e;
+}
+
+.role-card {
+  background: #f8f9ff;
+  border: 1px solid #dde1ee;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.role-card .role-card-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1d2e;
+}
+
+.role-card .role-card-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4f46e5;
+}
+
+.role-link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.role-link {
+  display: block;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1.5px solid #dde1ee;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4f46e5;
+  text-decoration: none;
+  transition: background .15s, border-color .15s;
+}
+.role-link:hover {
+  background: #eef2ff;
+  border-color: #4f46e5;
+}
+
+.no-role-message {
+  background: #fef9c3;
+  border: 1px solid #fde047;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #854d0e;
+  text-align: left;
+}
