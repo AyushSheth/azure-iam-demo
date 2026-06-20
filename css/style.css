@@ -167,3 +167,43 @@ p  { font-size: 14px; color: #6b7280; margin-bottom: 24px; }
   color: #854d0e;
   text-align: left;
 }
+
+/* ── Idle timeout warning ── */
+.idle-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(26, 29, 46, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.idle-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 36px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.idle-modal h1, .idle-modal h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.idle-modal p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.idle-countdown {
+  font-size: 32px;
+  font-weight: 700;
+  color: #dc2626;
+  margin-bottom: 20px;
+  font-variant-numeric: tabular-nums;
+}

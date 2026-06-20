@@ -172,3 +172,63 @@ function renderRoleContent(roleLabel) {
     `;
   }
 }
+// ─────────────────────────────────────────────
+// Idle Timeout Settings
+// ─────────────────────────────────────────────
+const IDLE_WARNING_AFTER = 13 * 60 * 1000;   // 13 minutes
+const IDLE_LOGOUT_AFTER  = 2 * 60 * 1000;    // 2 more minutes after warning
+let idleWarningTimer;
+let idleLogoutTimer;
+let countdownInterval;
+
+function startIdleTimers() {
+  clearTimeout(idleWarningTimer);
+  clearTimeout(idleLogoutTimer);
+  clearInterval(countdownInterval);
+
+  idleWarningTimer = setTimeout(showIdleWarning, IDLE_WARNING_AFTER);
+}
+
+function showIdleWarning() {
+  document.getElementById("idle-warning").style.display = "flex";
+
+  let secondsLeft = IDLE_LOGOUT_AFTER / 1000;
+  updateCountdownDisplay(secondsLeft);
+
+  countdownInterval = setInterval(() => {
+    secondsLeft--;
+    updateCountdownDisplay(secondsLeft);
+    if (secondsLeft <= 0) {
+      clearInterval(countdownInterval);
+    }
+  }, 1000);
+
+  idleLogoutTimer = setTimeout(() => {
+    signOut();
+  }, IDLE_LOGOUT_AFTER);
+}
+
+function updateCountdownDisplay(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  document.getElementById("idle-countdown").textContent =
+    `${mins}:${secs.toString().padStart(2, "0")}`;
+}
+
+function stayLoggedIn() {
+  document.getElementById("idle-warning").style.display = "none";
+  startIdleTimers();
+}
+
+// Reset the timer on any user activity
+["mousemove", "mousedown", "keydown", "scroll", "touchstart"].forEach(evt => {
+  document.addEventListener(evt, () => {
+    // Only reset if the warning isn't currently showing
+    if (document.getElementById("idle-warning").style.display !== "flex") {
+      startIdleTimers();
+    }
+  });
+});
+
+// Start the timer once the page loads
+startIdleTimers();

@@ -118,7 +118,17 @@
   </style>
 </head>
 <body>
+<!-- Idle timeout warning popup -->
+<div id="idle-warning" class="idle-overlay" style="display:none;">
+  <div class="idle-modal">
+    <h2>Are you still there?</h2>
+    <p>You've been inactive for a while. For security, you'll be signed out automatically.</p>
+    <div class="idle-countdown" id="idle-countdown">2:00</div>
+    <button class="btn-microsoft" onclick="stayLoggedIn()">Stay signed in</button>
+  </div>
+</div>
 
+<div class="card dashboard-card">
 <div class="card dashboard-card">
 
   <!-- Logo -->
@@ -166,7 +176,7 @@
   </div>
 
   <div id="role-content"></div>
-  
+
   <div class="divider"></div>
 
   <button class="btn-signout" onclick="signOut()">Sign out</button>
